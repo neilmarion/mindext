@@ -1,0 +1,30 @@
+<%= form_for @new_composition do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Save' %>
+<% end %>
+
+
+<h1>Listing compositions</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @compositions.each do |composition| %>
+  <tr>
+    <td><%= composition.content %></td>
+    <td><%= link_to 'Show', composition %></td>
+    <td><%= link_to 'Edit', edit_composition_path(composition) %></td>
+    <td><%= link_to 'Destroy', composition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Composition', new_composition_path %>

@@ -1,0 +1,21 @@
+<%= form_for(@composition) do |f| %>
+  <% if @composition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@composition.errors.count, "error") %> prohibited this composition from being saved:</h2>
+
+      <ul>
+      <% @composition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
