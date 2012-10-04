@@ -1,20 +1,12 @@
-<%= form_for @new_composition do |f| %>
+<%= form_for @new_composition, remote: true do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content %>
-  <%= f.submit 'Save' %>
+  <%= f.submit 'Save', id: "composition_submit" %>
 <% end %>
-
 
 <h1>Listing compositions</h1>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<table id="compositions_table">
 <% @compositions.each do |composition| %>
   <tr>
     <td><%= composition.content %></td>

@@ -45,10 +45,10 @@ class CompositionsController < ApplicationController
 
     respond_to do |format|
       if @composition.save
-        format.html { redirect_to @composition, notice: 'Composition was successfully created.' }
+        format.js
         format.json { render json: @composition, status: :created, location: @composition }
       else
-        format.html { render action: "new" }
+        format.js
         format.json { render json: @composition.errors, status: :unprocessable_entity }
       end
     end

@@ -11,5 +11,7 @@ When /^I press "(.*?)"$/ do |arg1|
 end
 
 Then /^I should see "(.*?)" added in the compositions page$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  page.should have_no_xpath('a')
+  puts page.html
+  page.should have_content(arg1)
 end
