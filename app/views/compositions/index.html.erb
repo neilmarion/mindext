@@ -1,5 +1,11 @@
 <h1>Listing compositions</h1>
 
+<%= form_for @new_composition do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Save', id: "composition_submit" %>
+<% end %>
+
 <table>
   <tr>
     <th>Content</th>

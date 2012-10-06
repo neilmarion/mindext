@@ -2,7 +2,9 @@ class CompositionsController < ApplicationController
   # GET /compositions
   # GET /compositions.json
   def index
+    @new_composition = Composition.new
     @compositions = Composition.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
