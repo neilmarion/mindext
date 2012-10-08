@@ -26,8 +26,8 @@ describe "Compositions", :js => :true do
       fill_in "Content", :with => "My Globe number +639123456789 #tag"
       click_button "Save"
       Tag.count.should == 1
-      Tag.all.collect(&:tag).should include "#tag"
-      page.should have_content("My Globe number +639123456789 #tag")
+      Tag.all.collect(&:tag).should include '#tag'
+      page.should have_content "<a href=\"\\tags\\#{Tag.find_by_tag("#tag").first.id}\">#tag</a>"
     end
   end
   

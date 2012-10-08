@@ -1,3 +1,3 @@
 <tr>
-  <td><%= composition.content %></td>
+  <td><%= replace_hashtags_with_hyperlinks(composition.content, @tags).html_safe %></td>
 </tr>

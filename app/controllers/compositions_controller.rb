@@ -4,7 +4,7 @@ class CompositionsController < ApplicationController
   def index
     @new_composition = Composition.new
     @compositions = Composition.all
-    
+    @tags = Tag.all
 
     respond_to do |format|
       format.html # index.html.erb
