@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008024518) do
+ActiveRecord::Schema.define(:version => 20121008025121) do
 
   create_table "compositions", :force => true do |t|
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "compositions_tags", :force => true do |t|
+    t.integer  "composition_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "compositions_tags", ["composition_id"], :name => "index_compositions_tags_on_composition_id"
+  add_index "compositions_tags", ["tag_id"], :name => "index_compositions_tags_on_tag_id"
 
   create_table "tags", :force => true do |t|
     t.string   "tag"
