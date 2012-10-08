@@ -44,4 +44,5 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'test-unit' #for the sake of removing an error
 end
