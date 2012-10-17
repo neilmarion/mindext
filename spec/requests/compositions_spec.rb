@@ -28,7 +28,7 @@ describe "Compositions", :js => :true do
       Tag.count.should == 1
       Tag.all.collect(&:tag).should include '#tag'
       #how to do this??? checking if a link has been made?
-      page.should have_content "#tag"
+      page.should have_content "My Globe number +639123456789 #tag"
     end
   end
   
