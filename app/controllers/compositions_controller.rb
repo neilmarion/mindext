@@ -3,7 +3,7 @@ class CompositionsController < ApplicationController
   # GET /compositions.json
   def index
     @new_composition = Composition.new
-    @compositions = Composition.all
+    @compositions = Composition.order("created_at DESC")
     @tags = Tag.all
 
     respond_to do |format|

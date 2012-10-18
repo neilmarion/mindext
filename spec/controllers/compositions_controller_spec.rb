@@ -57,11 +57,13 @@ describe CompositionsController do
     end
     
     it "order compositions by date created descending order" do
-      composition_1 = FactoryGirl.create(:composition)
-      composition_2 = FactoryGirl.create(:composition)
-      composition_3 = FactoryGirl.create(:composition)
+      composition_1 = FactoryGirl.create(:composition, created_at: Time.now-1)
+      composition_2 = FactoryGirl.create(:composition, created_at: Time.now)
+      composition_3 = FactoryGirl.create(:composition, created_at: Time.now+1)
       get :index, {}, valid_session
       assigns(:compositions).should eq([composition_3, composition_2, composition_1])
+      
+      puts assigns(:compositions).inspect
     end
   end
 
