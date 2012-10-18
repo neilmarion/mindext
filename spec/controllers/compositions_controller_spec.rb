@@ -36,7 +36,7 @@ describe CompositionsController do
 
   describe "GET index" do
     it "assigns all compositions as @compositions" do
-      composition = Composition.create! valid_attributes
+      composition = FactoryGirl.create(:composition)
       get :index, {}, valid_session
       assigns(:compositions).should eq([composition])
     end
@@ -44,7 +44,7 @@ describe CompositionsController do
 
   describe "GET show" do
     it "assigns the requested composition as @composition" do
-      composition = Composition.create! valid_attributes
+      composition = FactoryGirl.create(:composition)
       get :show, {:id => composition.to_param}, valid_session
       assigns(:composition).should eq(composition)
     end
@@ -55,11 +55,19 @@ describe CompositionsController do
       get :new, {}, valid_session
       assigns(:composition).should be_a_new(Composition)
     end
+    
+    it "order compositions by date created descending order" do
+      composition_1 = FactoryGirl.create(:composition)
+      composition_2 = FactoryGirl.create(:composition)
+      composition_3 = FactoryGirl.create(:composition)
+      get :index, {}, valid_session
+      assigns(:compositions).should eq([composition_3, composition_2, composition_1])
+    end
   end
 
   describe "GET edit" do
     it "assigns the requested composition as @composition" do
-      composition = Composition.create! valid_attributes
+      composition = FactoryGirl.create(:composition)
       get :edit, {:id => composition.to_param}, valid_session
       assigns(:composition).should eq(composition)
     end
