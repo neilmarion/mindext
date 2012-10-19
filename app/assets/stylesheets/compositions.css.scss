@@ -1,3 +1,22 @@
 // Place all the styles related to the Compositions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+  #mindext_panels {
+    text-align: left;
+		vertical-align: top;
+		width: 900px;
+		margin: 0 auto;
+  
+    #tags_panel {
+      border: 1px solid #ccc;
+      float: left;
+			width: 300px;
+    }
+  
+    #compositions_panel {
+      border: 1px solid #ccc;
+      float: right;
+      width: 560px;
+    }
+	}

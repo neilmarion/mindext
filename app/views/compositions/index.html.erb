@@ -6,10 +6,18 @@
 
 <h1>Listing compositions</h1>
 
-<table id="compositions_table">
-<% @compositions.each do |composition| %>
-  <tr>
-    <td><%= replace_hashtags_with_hyperlinks(composition.content, @tags).html_safe %></td>
-  </tr>
-<% end %>
-</table>
+<div id="mindext_panels">
+  <div id="tags_panel">
+    hello
+  </div>
+  <div id="compositions_panel">
+    <table id="compositions_table">
+    <% @compositions.each do |composition| %>
+      <tr>
+        <td><%= replace_hashtags_with_hyperlinks(composition.content, @tags).html_safe %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+
+</div>
