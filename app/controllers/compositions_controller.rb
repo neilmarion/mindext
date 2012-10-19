@@ -4,7 +4,7 @@ class CompositionsController < ApplicationController
   def index
     @new_composition = Composition.new
     @compositions = Composition.order("created_at DESC")
-    @tags = Tag.all
+    @tags = Tag.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -91,8 +91,10 @@ class CompositionsController < ApplicationController
   end
   
   def create_hashtags(hashtag_array)
+    tags = []
     hashtag_array.each do |hashtag|
-      Tag.create(tag: hashtag)
+      tags << Tag.create(tag: hashtag)
     end
+    tags
   end
 end
