@@ -4,6 +4,9 @@
   <%= f.submit 'Save', id: "composition_submit" %>
 <% end %>
 
+<%= label_tag :search_compositions %>
+<%= text_field_tag :search_compositions %>
+
 <h1>Listing compositions</h1>
 
 <div id="mindext_panels">
@@ -13,9 +16,7 @@
   <div id="compositions_panel">
     <table id="compositions_table">
     <% @compositions.each do |composition| %>
-      <tr>
-        <td><%= replace_hashtags_with_hyperlinks(composition.content, @tags).html_safe %></td>
-      </tr>
+      <%= render 'compositions/composition', composition: composition %>
     <% end %>
     </table>
   </div>

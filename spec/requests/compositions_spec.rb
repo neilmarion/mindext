@@ -32,4 +32,19 @@ describe "Compositions", :js => :true do
     end
   end
   
+  describe "GET /search" do
+    before(:each) do
+      composition_1 = FactoryGirl.create(:composition, content: "Neil")
+      composition_2 = FactoryGirl.create(:composition, content: "Marion")    
+    end
+    
+    it "searches composition" do
+      fill_in "Search compositions", :with => "Neil"
+      click_button "Save"
+      page.should have_content("Neil")
+      page.should_not have_content("Marion")
+    end
+
+  end
+  
 end

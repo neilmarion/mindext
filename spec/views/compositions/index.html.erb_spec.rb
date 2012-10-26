@@ -9,6 +9,12 @@ describe "compositions/index" do
       ]
     )
     
+    assign(:tags,
+      [
+        stub_model(Tag, :tag => "#tag"),
+      ]
+    )
+    
     assign(:new_composition, [stub_model(Composition)] )
   end
 

@@ -62,8 +62,6 @@ describe CompositionsController do
       composition_3 = FactoryGirl.create(:composition, created_at: Time.now+1)
       get :index, {}, valid_session
       assigns(:compositions).should eq([composition_3, composition_2, composition_1])
-      
-      puts assigns(:compositions).inspect
     end
   end
 
@@ -163,6 +161,18 @@ describe CompositionsController do
       composition = Composition.create! valid_attributes
       delete :destroy, {:id => composition.to_param}, valid_session
       response.should redirect_to(compositions_url)
+    end
+  end
+  
+  describe "GET search" do
+    before(:each) do
+      @composition_1 = FactoryGirl.create(:composition, content: "Neil")
+      @composition_2 = FactoryGirl.create(:composition, content: "Marion")    
+    end
+  
+    it "searches by content of composition" do
+      get :search, {"query" => @composition_1.content}, valid_session
+      assigns(:compositions).should eq([@composition_1])
     end
   end
 

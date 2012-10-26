@@ -37,6 +37,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
+gem 'thinking-sphinx'
+
 group :development, :test do
   gem 'factory_girl'
   gem 'rspec-rails'

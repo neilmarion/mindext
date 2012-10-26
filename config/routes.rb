@@ -1,8 +1,14 @@
 Mindext::Application.routes.draw do
   root :to => "compositions#index"
 
-  resources :compositions
+  resources :compositions do
+    collection do
+      get :search
+    end
+  end
   resources :tags
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

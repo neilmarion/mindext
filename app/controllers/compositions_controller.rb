@@ -84,6 +84,14 @@ class CompositionsController < ApplicationController
     end
   end
   
+  def search
+    @compositions = Composition.search params[:query]
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   private
   
   def extract_hashtags(string)
