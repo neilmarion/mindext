@@ -85,7 +85,8 @@ class CompositionsController < ApplicationController
   end
   
   def search
-    @compositions = Composition.search params[:query]
+  params[:query]
+    @compositions = Composition.where("content LIKE :query", {:query => "%#{params[:query]}%"})
     
     respond_to do |format|
       format.js

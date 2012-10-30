@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl'
+require 'thinking_sphinx/test'
 FactoryGirl.find_definitions
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -55,5 +56,6 @@ RSpec.configure do |config|
   end
   
   config.include FactoryGirl::Syntax::Methods
-
+  #ThinkingSphinx::Test.init
+  #ThinkingSphinx::Test.start_with_autostop
 end
