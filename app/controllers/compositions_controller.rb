@@ -42,7 +42,7 @@ class CompositionsController < ApplicationController
   # POST /compositions
   # POST /compositions.json
   def create
-    create_hashtags(extract_hashtags(params[:composition][:content]))
+    #create_hashtags(extract_hashtags(params[:composition][:content]))
     @composition = Composition.new(params[:composition])
     
     respond_to do |format|
@@ -91,19 +91,5 @@ class CompositionsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-  
-  private
-  
-  def extract_hashtags(string)
-    string.split.find_all{|word| /^#.+/.match word}
-  end
-  
-  def create_hashtags(hashtag_array)
-    tags = []
-    hashtag_array.each do |hashtag|
-      tags << Tag.create(tag: hashtag)
-    end
-    tags
   end
 end

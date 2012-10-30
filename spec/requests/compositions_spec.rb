@@ -34,17 +34,24 @@ describe "Compositions", :js => :true do
   
   describe "GET /search" do
     before(:each) do
-      composition_1 = FactoryGirl.create(:composition, content: "Neil")
-      composition_2 = FactoryGirl.create(:composition, content: "dela Cruz")
+      @composition_1 = FactoryGirl.create(:composition, content: "Neil")
+      @composition_2 = FactoryGirl.create(:composition, content: "dela Cruz")
       visit compositions_path
     end
     
     it "searches composition" do
-      fill_in "search_compositions", :with => "Neil"
-      page.should have_content("Neil")
-      page.should_not have_content("dela Cruz")
+      fill_in "search_compositions", :with => @composition_1.content
+      page.should have_content(@composition_1.content)
+      page.should_not have_content(@composition_2.content)
     end
-
+  end
+  
+  describe "get compositions per tag" do
+    before(:each) do
+      composition_1 = FactoryGirl.create(:composition, content: "Neil #tag1")
+      composition_2 = FactoryGirl.create(:composition, content: "dela Cruz #tag2")
+      visit compositions_path
+    end
   end
   
 end
