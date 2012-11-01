@@ -24,7 +24,7 @@ describe CompositionsController do
   # Composition. As you add validations to Composition, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {:content => "My Globe number +639123456789"}
+    {:content => "My Globe number +639123456789 #number"}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -75,10 +75,14 @@ describe CompositionsController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Composition" do
+      it "creates a new Composition together with a new tag" do
         expect {
-          post :create, {:composition => valid_attributes}, valid_session
-        }.to change(Composition, :count).by(1)
+          expect {
+            expect {
+              post :create, {:composition => valid_attributes}, valid_session
+            }.to change(Composition, :count).by(1)
+          }.to change(Tag, :count).by(1)
+        }.to change(CompositionsTag, :count).by(1)
       end
 
       it "assigns a newly created composition as @composition" do

@@ -11,5 +11,19 @@ describe Composition do
     }.to change(Tag, :count).by(1)
     Tag.first.tag.should eq("#tag")
   end
+  
+  it "should not recreate tags when tag is already existing" do
+    expect {
+    
+      expect {
+        FactoryGirl.create(:composition, content: "Neil #tag")
+      }.to change(Tag, :count).by(1)
+      
+      expect {
+        FactoryGirl.create(:composition, content: "Marion #tag")
+      }.to_not change(Tag, :count)
+      
+    }.to change(Composition, :count).by(2)
+  end
 end
 

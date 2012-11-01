@@ -4,7 +4,7 @@ class Composition < ActiveRecord::Base
   has_many :compositions_tags
   has_many :tags, :through => :compositions_tags
   
-  before_create :create_hashtags
+  after_create :create_hashtags
   
   define_index do
     # fields
@@ -22,10 +22,10 @@ class Composition < ActiveRecord::Base
   
   def create_hashtags
     hashtag_array = extract_hashtags
-    tags = []
+    tags_arr = []
     hashtag_array.each do |hashtag|
-      tags << Tag.create(tag: hashtag)
+      tags_arr << tags.create(tag: hashtag)
     end
-    tags
+    tags_arr
   end
 end

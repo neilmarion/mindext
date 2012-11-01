@@ -46,12 +46,20 @@ describe "Compositions", :js => :true do
     end
   end
   
-  describe "get compositions per tag" do
+  describe "clicking a tag" do
     before(:each) do
-      composition_1 = FactoryGirl.create(:composition, content: "Neil #tag1")
-      composition_2 = FactoryGirl.create(:composition, content: "dela Cruz #tag2")
+      @composition_1 = FactoryGirl.create(:composition, content: "Neil #tag1")
+      @composition_2 = FactoryGirl.create(:composition, content: "dela Cruz #tag2")
       visit compositions_path
     end
+    
+    it "filters compositions per tag" do
+      fill_in "search_compositions", :with => "z" # a very ugly workaround since removing this will cause Capybara ambiguity
+      click_link("#tag1")
+      page.should have_content(@composition_1.content)
+      page.should_not have_content(@composition_2.content)
+    end
+    
   end
   
 end
