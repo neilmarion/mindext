@@ -99,6 +99,17 @@ describe CompositionsController do
           post :create, {:composition => valid_attributes}, valid_session
         }.to_not change(Tag, :count)
       end
+      
+      it "creates compositions of existing tags but associate that composition to those tags" do
+        tag = FactoryGirl.create(:tag, tag: "#number")
+        Tag.all.count.should eq(1)
+        tag.compositions.count.should eq(0)
+        
+        expect {
+          post :create, {:composition => valid_attributes}, valid_session
+        }.to_not change(Tag, :count)
+        tag.compositions.count.should eq(1)
+      end
     end
 
     describe "with invalid params" do

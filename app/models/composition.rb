@@ -21,11 +21,9 @@ class Composition < ActiveRecord::Base
   end
   
   def create_hashtags
-    hashtag_array = extract_hashtags
-    tags_arr = []
-    hashtag_array.each do |hashtag|
-      tags_arr << tags.create(tag: hashtag)
+    extract_hashtags.each do |hashtag|
+      tag = Tag.find_or_create_by_tag(hashtag)
+      CompositionsTag.create(tag: tag, composition: self)
     end
-    tags_arr
   end
 end
