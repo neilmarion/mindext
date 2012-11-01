@@ -90,6 +90,15 @@ describe CompositionsController do
         assigns(:composition).should be_a(Composition)
         assigns(:composition).should be_persisted
       end
+      
+      it "creates compositions of existing tags but does not duplicate those tags" do
+        FactoryGirl.create(:tag, tag: "#number")
+        Tag.all.count.should eq(1)
+        
+        expect {
+          post :create, {:composition => valid_attributes}, valid_session
+        }.to_not change(Tag, :count)
+      end
     end
 
     describe "with invalid params" do

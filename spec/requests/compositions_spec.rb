@@ -30,6 +30,7 @@ describe "Compositions", :js => :true do
       #how to do this??? checking if a link has been made?
       page.should have_content "My Globe number +639123456789 #tag"
     end
+
   end
   
   describe "GET /search" do
