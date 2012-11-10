@@ -3,7 +3,7 @@ module CompositionsHelper
     new = ""
     r = /^#.+/
     string.split.each do |s|
-      s = s.match(r) ? "<a href=#{tag_path(Tag.find_by_tag(s).id)}>#{s}</a>" : s
+      s = s.match(r) ? "<a href=#{tag_path(Tag.find_by_tag(s).id)} data-remote='true'>#{s}</a>" : s
       new = new + s + " "
     end
     new
