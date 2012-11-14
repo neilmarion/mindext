@@ -45,6 +45,13 @@ class CompositionsController < ApplicationController
   # POST /compositions.json
   def create
     #create_hashtags(extract_hashtags(params[:composition][:content]))
+    
+    #if remotipart_submitted?
+      # do one thing
+    #else
+      # do another
+    #end
+    
     @composition = Composition.new(params[:composition])
     
     respond_to do |format|
