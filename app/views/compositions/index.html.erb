@@ -15,7 +15,7 @@
   </div>
   <div id="compositions_panel">
     <table id="compositions_table">
-    <% @compositions.each do |composition| %>
+    <% for composition in @compositions %>
       <%= render 'compositions/composition', composition: composition %>
     <% end %>
     </table>
