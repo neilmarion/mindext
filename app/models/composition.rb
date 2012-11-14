@@ -1,8 +1,11 @@
 class Composition < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :assets_attributes
   
   has_many :compositions_tags
   has_many :tags, :through => :compositions_tags
+  has_many :assets
+  
+  accepts_nested_attributes_for :assets, :allow_destroy => true
   
   after_create :create_hashtags
   

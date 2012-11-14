@@ -3,6 +3,7 @@ class CompositionsController < ApplicationController
   # GET /compositions.json
   def index
     @new_composition = Composition.new
+    5.times { @new_composition.assets.build }
     @compositions = Composition.order("created_at DESC")
     @tags = Tag.order("created_at DESC")
 
@@ -37,6 +38,7 @@ class CompositionsController < ApplicationController
   # GET /compositions/1/edit
   def edit
     @composition = Composition.find(params[:id])
+    5.times { @composition.assets.build }
   end
 
   # POST /compositions
